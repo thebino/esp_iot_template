@@ -4,10 +4,10 @@ services:
   runner:
     image: myoung34/github-runner:latest
     environment:
-      REPO_URL: "https://github.com/StuermerBenjamin/esp_ble_throughput"
+      REPO_URL: "https://github.com/thebino/esp_iot_template"
       RUNNER_NAME: "esp-runer"
       RUNNER_LABELS: "esp32"
-      RUNNER_TOKEN: "AAGNPULRS6BBE4BJSAAQ2N3C2VO7U "
+      RUNNER_TOKEN: "RUNNER_TOKEN "
       RUNNER_WORKDIR: /tmp/runner/work
       RUNNER_SCOPE: 'repo'
       LABELS: linux,x64,gpu

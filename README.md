@@ -1,6 +1,6 @@
 # ESP IoT template
 
-[![License](https://img.shields.io/github/license/StuermerBenjamin/esp_ble_device)](./LICENSE.md)
+[![License](https://img.shields.io/github/license/thebino/esp_iot_template)](./LICENSE.md)
 
 Reusable **ESP IoT template** application based on [ESP-IDF](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/index.html) as a standalone device with a basic feature-set:
  - Over-the-air update via BLE
@@ -28,9 +28,9 @@ Reusable **ESP IoT template** application based on [ESP-IDF](https://docs.espres
 ## CI/CD
 
 ### ESP32
-[![Continuous Integration Pipeline [ESP32]](https://github.com/StuermerBenjamin/esp_ble_throughput/actions/workflows/esp32.yml/badge.svg)](https://github.com/StuermerBenjamin/esp_ble_throughput/actions/workflows/esp32.yml)
+[![Continuous Integration Pipeline [ESP32]](https://github.com/thebino/esp_iot_template/actions/workflows/esp32.yml/badge.svg)](https://github.com/thebino/esp_iot_template/actions/workflows/esp32.yml)
 
-[![Continuous Integration Pipeline [Android]](https://github.com/StuermerBenjamin/esp_ble_throughput/actions/workflows/android.yml/badge.svg)](https://github.com/StuermerBenjamin/esp_ble_throughput/actions/workflows/android.yml)
+[![Continuous Integration Pipeline [Android]](https://github.com/thebino/esp_iot_template/actions/workflows/android.yml/badge.svg)](https://github.com/thebino/esp_iot_template/actions/workflows/android.yml)
 
 This project is using automated processes known as **continuous integration** and **continuous delivery** (CI/CD) by using [github actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) 
 
