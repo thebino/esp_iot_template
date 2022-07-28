@@ -1,0 +1,15 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">IoT Skeleton</string>
+    <string name="scan_title">BLE Scan</string>
+    <string name="scan_description">Scanning for nearby devices</string>
+    <string name="device_name_unknown">Unknown</string>
+    <string name="device_last_seen_now">now</string>
+    <plurals name="minutes">
+        <item quantity="one"><xliff:g id="seconds" example="20">%1$d</xliff:g> minute</item>
+        <item quantity="other"><xliff:g id="seconds" example="20">%1$d</xliff:g> minutes</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="one"><xliff:g id="seconds" example="20">%1$d</xliff:g> sec</item>
+        <item quantity="other"><xliff:g id="seconds" example="20">%1$d</xliff:g> secs</item>
+    </plurals>
+</resources>

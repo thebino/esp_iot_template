@@ -1,0 +1,112 @@
+name: Continuous Integration Pipeline [ESP32]
+
+on:
+  push:
+    branches:
+      - main
+      - development
+
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
+
+      - name: Install ESP-IDF 
+        uses: espressif/esp-idf-ci-action@v1
+        with:
+          esp_idf_version: v4.4
+          target: esp32
+          path: 'esp32'
+          command: idf.py reconfigure build size
+
+      - name: Archive ESP Image
+        uses: actions/upload-artifact@v3
+        with:
+          name: esp-firmware
+          path: esp32/build/esp_ble_device.bin
+
+
+  host_tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: '1'
+
+      - name: Install ESP-IDF 
+        uses: espressif/esp-idf-ci-action@v1
+        with:
+          esp_idf_version: v4.4
+          target: linux
+          path: 'esp32/host_test/test_sample_host'
+          command: idf.py --preview build
+
+      - name: Run host test application
+        run: ./esp32/host_test/build/linux_host_app.elf
+
+
+  target_tests:
+    runs-on: self-hosted
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: '1'
+
+      - name: Check usb devices
+        run: |
+          ls -alh /
+          ls -alh /dev/
+
+      - name: Install ESP-IDF 
+        uses: espressif/esp-idf-ci-action@v1
+        with:
+          esp_idf_version: v4.4
+          target: esp32
+          path: 'esp32/test'
+          command: idf.py flash -p /dev/ttyAMA0
+
+
+  release:
+    # if: github.ref == 'refs/heads/development'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+  
+      - name: Create release
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: true
+          prerelease: false
+          release_name: Release ${{ github.ref }}
+          body_path: esp32/CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Upload binary artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: esp32/build/esp_ble_device.bin
+          asset_name: esp_ble_device.bin
+          asset_content_type: application/octet-stream

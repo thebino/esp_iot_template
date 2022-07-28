@@ -1,0 +1,54 @@
+# Application related default options
+# 
+# This file is never touched by the build system
+
+#
+# ESP System Settings
+#
+# prevent the esp from rebooting on error
+CONFIG_ESP_SYSTEM_PANIC_PRINT_HALT=y
+
+#
+# Serial flasher config
+#
+# increase the flash size to 4 MB
+CONFIG_ESPTOOLPY_FLASHSIZE_4MB=y
+
+#
+# Log output
+#
+CONFIG_LOG_DEFAULT_LEVEL_DEBUG=y
+
+
+#
+# BT config
+#
+# enable Bluetooth and show the Bluetooth configuration submenu
+CONFIG_BT_ENABLED=y
+# choose NimBLE (BLE only) bluetooth host stack
+CONFIG_BT_NIMBLE_ENABLED=y
+# set NimBLE Host log verbosity
+CONFIG_BT_NIMBLE_LOG_LEVEL_INFO=y
+# limit NimBLE concurrent connections to 1
+CONFIG_BTDM_CTRL_BLE_MAX_CONN=1
+# Bluetooth controller stack should provide Bluetooth Host usecases only
+BT_CONTROLLER_DISABLED=y
+# Bluetooth controller mode limited to BLE only
+CONFIG_BTDM_CTRL_MODE_BLE_ONLY=y
+
+#
+# WiFi enabled
+#
+CONFIG_WIFI_ENABLED=y
+
+#
+# Build type
+#
+# enable reproducible builds
+CONFIG_APP_REPRODUCIBLE_BUILD=y
+
+#
+# Partition Table
+#
+# Set the partition table to use two OTA partitions
+CONFIG_PARTITION_TABLE_TWO_OTA=y

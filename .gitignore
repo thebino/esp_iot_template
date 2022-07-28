@@ -1,0 +1,8 @@
+sdkconfig
+**build/
+
+android/.gradle
+android/.idea
+android/local.properties
+
+**sdkconfig.old

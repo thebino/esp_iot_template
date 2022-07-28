@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+      "ms-vscode.cpptools",
+      "marus25.cortex-debug",
+      "hancel.serialport-helper",
+      "espressif.esp-idf-extension",
+    ],
+}

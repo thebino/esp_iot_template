@@ -1,0 +1,56 @@
+{
+    "version": "2.0.0",
+    "options": {
+        "cwd": "${workspaceRoot}",
+        "env": {
+            "PATH" : "$PATH",
+            "IDF_PATH" : "[PUT HERE THE PATH]/esp-idf"
+        }
+    },
+    "tasks": [
+        {
+            "label": "Build app",
+            "type": "shell",
+            "command": "idf.py",
+            "args": [
+                "build"
+            ],
+            "group": {
+                "_id": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash app",
+            "type": "shell",
+            "command": "idf.py",
+            "args": [
+                "flas"
+            ],
+            "group": {
+                "_id": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "monitor",
+            "type": "shell",
+            "args": [
+                "-c",
+                "make monitor"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "flash app",
+            "type": "shell",
+            "args": [
+                "-c",
+                "make -j4 app-flash"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}

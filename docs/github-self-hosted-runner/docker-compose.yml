@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  runner:
+    image: myoung34/github-runner:latest
+    environment:
+      REPO_URL: "https://github.com/StuermerBenjamin/esp_ble_throughput"
+      RUNNER_NAME: "esp-runer"
+      RUNNER_LABELS: "esp32"
+      RUNNER_TOKEN: "AAGNPULRS6BBE4BJSAAQ2N3C2VO7U "
+      RUNNER_WORKDIR: /tmp/runner/work
+      RUNNER_SCOPE: 'repo'
+      LABELS: linux,x64,gpu
+    volumes:
+      - /tmp/runner:/tmp/runner
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /dev/:/dev/
